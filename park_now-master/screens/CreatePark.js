@@ -12,13 +12,13 @@ const CreatePark=({navigation})=>{
         <ParkStack.Navigator
         screenOptions ={{
           headerStyle:{
-            backgroundColor:"#6f1282",   
+            backgroundColor:"#00457C",   
             height:55,
           },
           
           headerTitleAlign: 'center',
           headerShown: true,
-          headerTintColor:"#fff",
+          headerTintColor:"#ebf7fc",
           headerTitleStyle:{
           },
          
@@ -33,13 +33,13 @@ const CreatePark=({navigation})=>{
             <Icon.Button
               name="chevron-left"
               size={25}
-              color='white'
-              backgroundColor="#6f1282"
+              color='#ebf7fc'
+              backgroundColor="#00457C"
               onPress={() => navigation.goBack()}
             />
           </View>
         ),}}/>
-         <ParkStack.Screen name="Choose available slots" component={Slots} />
+         <ParkStack.Screen name="available slots" component={Slots} />
         </ParkStack.Navigator>
       );
 }

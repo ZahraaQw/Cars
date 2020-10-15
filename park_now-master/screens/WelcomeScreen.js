@@ -32,7 +32,7 @@ const WelcomeScreen=({navigation})=>{
             <View style={ styles.button }>
                 <TouchableOpacity  onPress={()=> navigation.navigate("Sing In")}>
                     <LinearGradient
-                    colors={["#6f1282","#c37dd1"]}
+                    colors={["#00457C","#9acdf5"]}
                     style={ styles.signIn }
                     >
                  <Text   style={ styles.textSign } >Get Started </Text>
@@ -61,7 +61,7 @@ const windowHeight = Dimensions.get('window').height;
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor:"#6f1282",
+        backgroundColor:"#00457C",
     },
     imgBackground: {
        width:  windowWidth,
@@ -82,17 +82,17 @@ const styles = StyleSheet.create({
         paddingHorizontal:30
     },
     title:{
-        color:"#6f1282",
-        fontSize:25,
+        color:"#00457C",
+        fontSize:22,
         fontWeight:"bold",
     },
     text:{
-        color:"#c37dd1",
+        color:"#84b8e0",
         marginTop:20,
     },
     button:{
         alignItems:"flex-end",
-        marginTop:30,
+        marginTop:16,
     },
     signIn:{
         width:180,

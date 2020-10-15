@@ -12,38 +12,23 @@ class SignInScreen extends Component{
     constructor(props) {
         super(props);
         this.state = { 
-            typing_email:false,
             typing_user:false,
             typing_pass:false,
-            typing_conPass:false,
-            animation_login:new Animated.Value(width-40),
+            animation_login:new Animated.Value(width-120),
             enable:true,
             isValidUser:true,
             isValidPassword:true,
-            disabled_press:true,
+            disabled_press:false,
          };
     }
       
     _foucus(value){
       
-            if(value=="email"){
+  if(value=="user"){
                 this.setState(
                     {
-                        typing_email:true,
-                        typing_user:false,
-                        typing_pass:false,
-                        typing_conPass:false
-                    }
-                )
-            }
-
-            else  if(value=="user"){
-                this.setState(
-                    {
-                        typing_email:false,
                         typing_user:true,
                         typing_pass:false,
-                        typing_conPass:false
                     
                     }
                 )
@@ -52,25 +37,14 @@ class SignInScreen extends Component{
             else  if(value=="pass"){
                 this.setState(
                     {
-                        typing_email:false,
                         typing_user:false,
                         typing_pass:true,
-                        typing_conPass:false
                     
                     }
                 )
             }
 
-            else  if(value=="passC"){
-                this.setState(
-                    {
-                        typing_email:false,
-                        typing_user:false,
-                        typing_pass:false,
-                        typing_conPass:true
-                    }
-                )
-            }
+           
      
     }
 
@@ -78,8 +52,14 @@ class SignInScreen extends Component{
     _typing(){
         return (
             <TypingAnimation 
-              dotColor="#6f1282"
-              style={{marginRight:25}}
+              dotColor="#00457C"
+              
+              style={{
+                position: 'absolute', 
+                  marginTop:60,
+                  marginLeft:240,
+                  
+              }}
             
             />
           );
@@ -88,7 +68,7 @@ class SignInScreen extends Component{
       _animation(){
           Animated.timing(
               this.state.animation_login,{
-                  toValue:40,
+                  toValue:50,
                   duration:250
               }
           ).start();
@@ -96,10 +76,8 @@ class SignInScreen extends Component{
           setTimeout(()=>{
               this.setState({
                   enable:false,
-                  typing_email:false,
                   typing_user:false,
                   typing_pass:false,
-                  typing_conPass:false
               })
           },150);
       }
@@ -149,45 +127,38 @@ class SignInScreen extends Component{
     return(
         
         <View  style={ styles.container } >
-            
-            <LinearGradient  colors={["#eba9cf","#6f1282"]} 
-             start={{x: 0.0, y: 0.25}} end={{x: 0.5, y: 1.6}}
-             locations={[0,0.5,0.6]}
-            style={ styles. header } >
-                <Animatable.Text style={ styles.textSignup}
-                animation="fadeInLeft" duration={4000}> Welcome Back</Animatable.Text>
-                <Text style={styles.text} >Sign in to continue </Text>
-           </LinearGradient>
-
-
+           
+           <Text style={styles.textSignup}> Welcome Back</Text>
+            <Text style={styles.text} >Sing In </Text>
+            <ScrollView  style={styles.footer}>
            <Animatable.View
            
-           style={styles.footer}
+          
 
             animation="bounceInUp"
-            duration={5000}
+            duration={4000}
            >
-                  <ScrollView>
-        <Text style={[styles.title,{marginTop:40}]}>UserName</Text>
-             <View style={styles.action}>
-              <FontAwesome
-                 name="user-o"
-                 color="#05345a"
-                 size={20}
-                 style={{paddingTop:10,paddingEnd:4}}
-              
-              />
-
+     
+     <ScrollView >
+         
+            
+            <View style={styles.action}>
+                   <View style={{flexDirection:"row"}}>
+                     <FontAwesome
+                            name="user-o"
+                            color="#05345a"
+                            size={24}
+                            style={{paddingTop:60,paddingEnd:10}}
+                        
+                        />
                  <TextInput
-
-                 placeholder="Enter your UserName.."
-                 style={styles.inputText}
-                 onFocus={()=>this._foucus("user")}
-                 onChangeText={(text)=>this.validate(text,'username')}
-                 
-                 />
+                    style={{ height:50, width:250,borderColor: 'gray', borderWidth: 1 ,borderRadius:5,marginTop:50,fontSize:14}}
+                    placeholder=" Enter User Name "
+                    onFocus={()=>this._foucus("user")}
+                    onChangeText={(text)=>this.validate(text,'username')}/>
+    
                   {this.state.typing_user ?
-                 this._typing()
+                  this._typing()
                   :null }
                  </View>       
                     
@@ -197,23 +168,25 @@ class SignInScreen extends Component{
                     <Text style={styles.ErrMsg}>UserName must be  just character</Text>
                     </Animated.View>
                     }
-                 <Text style={[styles.title,{marginTop:20}]}>Password</Text>
+                    </View>
              <View style={styles.action}>
+                 <View style={{flexDirection:"row"}}>
              <FontAwesome
                  name="lock"
                  color="#05345a"
-                 size={20}
-                 style={{paddingTop:10,paddingEnd:4}}
+                 size={26}
+                 style={{paddingTop:20,paddingEnd:15}}
               />
                  <TextInput
-                 secureTextEntry
-                 placeholder="********"
-                 style={styles.inputText}
-                 onFocus={()=>this._foucus("pass")}
-                 onChangeText={(text)=>this.validate(text,'password')}
              
-                 />
-            {this.state.typing_pass ?
+                  secureTextEntry
+                   style={{ height:50, width:250,borderColor: 'gray', borderWidth: 1 ,borderRadius:5,marginTop:10,fontSize:12}}
+                    placeholder="********"
+                    onFocus={()=>this._foucus("pass")}
+                    onChangeText={(text)=>this.validate(text,'password')}
+                   />
+                        
+                {this.state.typing_pass ?
                  this._typing()
                   :null }
             </View>
@@ -224,9 +197,10 @@ class SignInScreen extends Component{
                         <Text style={styles.ErrMsg}>Password must be 8 long   . </Text>
                         </Animated.View>
                  }
+                 </View>
                  </ScrollView>
             <View>
-               <Text style={{color:'blue' ,fontSize:12,marginTop:10}} 
+               <Text style={{color:"#00457C" ,fontSize:12,marginBottom:30,marginTop:18,marginLeft:36}} 
                onPress={()=>this.props.navigation.navigate("Forget Password")}>Forgot Password ?</Text>
            </View>
             <TouchableOpacity
@@ -251,13 +225,14 @@ class SignInScreen extends Component{
   
          <View style={styles.signUp}>
                <Text style={{color:'black'}}> New User? </Text>
-               <Text style={{color:'blue'}} onPress={()=>this.props.navigation.navigate("Sing Up")}>Sign Up?</Text>
+               <Text style={{color:'#f7c202'}} onPress={()=>this.props.navigation.navigate("Sing Up")}>Sign Up?</Text>
               
 
            </View>
 
 
            </Animatable.View >
+           </ScrollView>
         </View>
     );}
 
@@ -268,43 +243,49 @@ const width = Dimensions.get('window').width;
 
     const styles = StyleSheet.create({
         container: {
-            flex: 1,
+            flex: 2,
             backgroundColor:"white",
-            justifyContent:'center'
+            justifyContent:'center',
+            alignItems:"center",
+            backgroundColor:"#00457C",
         },
 
         
         header:{
             backgroundColor:"white",
-            flex:1,
+            flex:2,
             justifyContent:"center",
             alignItems:"center",
             borderTopLeftRadius: 0,
             borderBottomRightRadius: 800,
-            
-           
-            
+  
         },
 
         footer:{
-            backgroundColor:"white",
-           flex:2,
-           padding:20,
-           paddingTop:10
-           
-           
-
+            marginTop:25,
+            backgroundColor:"#e6e7f0",
+            flex:1.5,
+            paddingLeft:25,
+            paddingRight:46,
+            paddingTop:20,
+            borderWidth:1.5,
+            borderColor:"#9acdf5",
+            borderTopLeftRadius:60,
+            borderTopRightRadius:60,        
         },
         textSignup:{
             color:"#fff",
-            fontWeight:"bold",
             fontSize:25,
-            paddingEnd:30,
-         
+            marginTop:40,
+            fontFamily:'Lobster-Regular'
+
         },
         text:{
             color:"#f7c202",
-            fontSize:14,
+            fontSize:15,
+            marginLeft:13,
+            fontFamily:'Lobster-Regular'
+
            
         },
 
@@ -316,9 +297,7 @@ const width = Dimensions.get('window').width;
 
         action:{
             flexDirection:"row",
-            borderBottomWidth:1,
-            borderBottomColor:"#f2f2f2",
-            marginTop:3
+      
         },
 
         inputText:{
@@ -339,17 +318,18 @@ const width = Dimensions.get('window').width;
         signUp:{
             flexDirection:'row',
             justifyContent:'center',
-            marginBottom:0
+            marginBottom:100
         },
         Butt_cont:{
             justifyContent:'center',
             alignItems:'center'
         },
          anmation:{
-             backgroundColor:"#6f1282",
-             paddingVertical:10,
-             marginTop:20,
-             marginBottom:5,
+             backgroundColor:"#00457C",
+             paddingVertical:14,
+             marginBottom:12,
+             marginLeft:40,
+             marginRight:10,
              borderRadius:100,
              justifyContent:'center',
              alignItems:'center'
@@ -362,7 +342,8 @@ const width = Dimensions.get('window').width;
          },
          ErrMsg:{
             color:"red",
-            fontSize:10
+                     
+
 
         }
       

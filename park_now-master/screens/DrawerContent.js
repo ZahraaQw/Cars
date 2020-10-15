@@ -49,7 +49,7 @@ const DrawerContent=(props)=>{
              icon={()=>(
              <Icon
              name="home" 
-             color="gray"
+             color="#849ba3"
              size={22} /> )
              }
              label="Home"
@@ -61,7 +61,7 @@ const DrawerContent=(props)=>{
              icon={()=>(
              <Icon
              name="user-circle"
-             color="gray"
+             color="#849ba3"
              size={22} /> )
              }
              label="Profile"
@@ -73,7 +73,7 @@ const DrawerContent=(props)=>{
              icon={()=>(
              <Icon
              name="plus"
-             color="gray"    
+             color="#849ba3"    
              size={22} /> )
              }
              label="Park my car"
@@ -85,7 +85,7 @@ const DrawerContent=(props)=>{
              icon={()=>(
              <Icon
              name="image"
-             color="gray"    
+             color="#849ba3"    
              size={22} /> )
              }
              label="Enterance Scanning"
@@ -96,7 +96,7 @@ const DrawerContent=(props)=>{
              icon={()=>(
              <Icon
              name="outdent"
-             color="gray"
+             color="#849ba3"
              size={22} /> )
              }
              label="Exit Scanning"
@@ -109,12 +109,12 @@ const DrawerContent=(props)=>{
              icon={()=>(
              <Icon
              name="history"
-             color="gray"
+             color="#849ba3"
              size={22} /> )
              }
              label="Parking History"  
              labelStyle={styles.lable}
-             onPress={() => {props.navigation.navigate('Timer')}}
+             onPress={() => {props.navigation.navigate('history')}}
             
              />
 
@@ -122,7 +122,7 @@ const DrawerContent=(props)=>{
              icon={()=>(
              <Icon
              name="map-pin"
-             color="gray"
+             color="#849ba3"
              size={22} /> )
              }
              label="Find My Position"
@@ -138,14 +138,14 @@ const DrawerContent=(props)=>{
              icon={()=>(
              <Icon
              name="arrow-left"
-             color="gray"
+             color="#849ba3"
              size={22}
              />
              )
              }
              label="Sign out"
              labelStyle={{
-               color:"#401147",
+               color:"#00457C",
                fontSize:15,
                fontWeight:"bold", 
              }}
@@ -163,7 +163,7 @@ const styles = StyleSheet.create({
       paddingLeft:95,
       paddingBottom:20,
       paddingTop:30,
-      backgroundColor:"#6f1282",
+      backgroundColor:"#00457C",
       
      // borderTopRightRadius:180,
  
@@ -175,15 +175,17 @@ const styles = StyleSheet.create({
     title: {
       fontSize: 16,
       marginTop: 3,
+      
       fontWeight: 'bold',
-      color:"#c49fc4",
+      color:"#99D4E9",
       
     },
      
     caption: {
       fontSize: 14,
       lineHeight: 14,
-      color:"#c49fc4",
+      color:"#99D4E9",
+      paddingLeft:22
     },
     drawerSection: {
       marginTop: 5,
@@ -194,7 +196,7 @@ const styles = StyleSheet.create({
         borderTopWidth: 1
     },
    lable:{
-     color:"#6f1282",
+     color:"#00457C",
      fontSize:14,
      fontWeight:"bold",
 

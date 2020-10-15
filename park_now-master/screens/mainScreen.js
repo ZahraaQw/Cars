@@ -9,6 +9,7 @@ import Home from "./home";
 import ProfilScreen from "./ProfilScreen";
 import Notification from './NotificationScreen';
 import SettingScreen from "./SettingScreen";
+import PaymentScreen from "./PaymentScreen";
 
 const HomeStack = createStackNavigator();
 
@@ -17,14 +18,14 @@ function HomeStackScreen({navigation}) {
     <HomeStack.Navigator
     screenOptions ={{
       headerStyle:{
-        backgroundColor:"#6f1282",   
+        backgroundColor:"#00457C",   
        // borderBottomRightRadius:80,
         height:55,
       },
       
       headerTitleAlign: 'center',
       headerShown: true,
-      headerTintColor:"#fff",
+      headerTintColor:"#99d4e9",
       headerTitleStyle:{
          // fontWeight:"bold"
       },
@@ -41,8 +42,8 @@ function HomeStackScreen({navigation}) {
         <Icon.Button
           name="navicon"
           size={25}
-          color='white'
-          backgroundColor="#6f1282"
+          color='#99d4e9'
+          backgroundColor="#00457C"
           onPress={() => navigation.toggleDrawer()}
         />
       </View>
@@ -57,28 +58,28 @@ function SettingsStackScreen({navigation}) {
     <SettingsStack.Navigator
     screenOptions ={{
       headerStyle:{
-        backgroundColor:"#6f1282",   
+        backgroundColor:"#00457C",   
       //  borderBottomRightRadius:80,
         height:55,
       },
       
       headerTitleAlign: 'center',
       headerShown: true,
-      headerTintColor:"#fff",
+      headerTintColor:"#99d4e9",
       headerTitleStyle:{
          // fontWeight:"bold"
       }
 
    }}
     >
-      <SettingsStack.Screen name="Settings" component={SettingScreen} options={{
+      <SettingsStack.Screen name="MyBooking" component={SettingScreen} options={{
     headerLeft: () => (
       <View style={{marginLeft: 20}}>
         <Icon.Button
           name="navicon"
           size={25}
-          color='white'
-          backgroundColor="#6f1282"
+          color='#99d4e9'
+          backgroundColor="#00457C"
           onPress={() => navigation.toggleDrawer()}
         />
       </View>
@@ -98,14 +99,14 @@ function ProfStackScreen({navigation}) {
     <ProfilStackScreen.Navigator
     screenOptions ={{
       headerStyle:{
-        backgroundColor:"#6f1282",   
+        backgroundColor:"#00457C",   
         //borderBottomRightRadius:80,
         height:55, 
       },
       
       headerTitleAlign: 'center',
       headerShown: true,
-      headerTintColor:"#fff",
+      headerTintColor:"#99d4e9",
       headerTitleStyle:{
          // fontWeight:"bold"
       },
@@ -119,8 +120,8 @@ function ProfStackScreen({navigation}) {
         <Icon.Button
           name="navicon"
           size={25}
-          color='white'
-          backgroundColor="#6f1282"
+          color='#99d4e9'
+          backgroundColor="#00457C"
           onPress={() => navigation.toggleDrawer()}
         />
       </View>
@@ -131,8 +132,8 @@ function ProfStackScreen({navigation}) {
         <Icon.Button
           name="edit"
           size={25}
-          color='white'
-          backgroundColor="#6f1282"
+          color='#99d4e9'
+          backgroundColor="#00457C"
           onPress={() => navigation.navigate("EditProfile")}
         />
       </View>
@@ -150,6 +151,44 @@ function ProfStackScreen({navigation}) {
   );
 }
 
+const PaymentStack = createStackNavigator();
+
+function PaymentStackScreen({navigation}) {
+  return (
+    <PaymentStack.Navigator
+    screenOptions ={{
+      headerStyle:{
+        backgroundColor:"#00457C",   
+      //  borderBottomRightRadius:80,
+        height:55,
+      },
+      
+      headerTitleAlign: 'center',
+      headerShown: true,
+      headerTintColor:"#99d4e9",
+      headerTitleStyle:{
+         // fontWeight:"bold"
+      }
+
+   }}
+    >
+   <PaymentStack.Screen name="Payment" component={PaymentScreen}  options={{
+    headerLeft: () => (
+      <View style={{marginLeft: 20}}>
+        <Icon.Button
+         name="navicon"
+          size={25}
+          color='#99d4e9'
+          backgroundColor="#00457C"
+          onPress={() => navigation.toggleDrawer()}
+        />
+      </View>
+    ),}} />
+     
+    </PaymentStack.Navigator>
+  );
+}
+
 
 
 const notificationStack = createStackNavigator();
@@ -159,14 +198,14 @@ function notifStack({navigation}) {
     <notificationStack.Navigator
     screenOptions ={{
       headerStyle:{
-          backgroundColor:"#6f1282",   
+          backgroundColor:"#00457C",   
           //borderBottomRightRadius:80,
           height:55,
       },
       
       headerTitleAlign: 'center',
       headerShown: true,
-      headerTintColor:"#fff",
+      headerTintColor:"#99d4e9",
       headerTitleStyle:{
         //  fontWeight:"bold"
       }
@@ -179,8 +218,8 @@ function notifStack({navigation}) {
         <Icon.Button
           name="navicon"
           size={25}
-          color='white'
-          backgroundColor="#6f1282"
+          color='#99d4e9'
+          backgroundColor="#00457C"
           onPress={() => navigation.toggleDrawer()}
         />
       </View>
@@ -216,7 +255,7 @@ export default function MainScreen({navigation}) {
            
             options={{
                 tabBarLabel: 'Home',
-                tabBarColor:"#6f1282",
+                tabBarColor:"#00457C",
                 tabBarIcon: ({ color }) => (
                 <Icon name="home" color={color} size={26} />
                 ),
@@ -229,7 +268,7 @@ export default function MainScreen({navigation}) {
             component={notifStack}
             options={{
                 tabBarLabel: 'Notifications',
-                tabBarColor:"#6f1282",
+                tabBarColor:"#00457C",
                 tabBarIcon: ({ color }) => (
                 <Icon name="bell" color={color} size={26} />
                 ),
@@ -241,20 +280,30 @@ export default function MainScreen({navigation}) {
             component={ProfStackScreen}
             options={{
                 tabBarLabel: 'Profile',
-                tabBarColor:"#6f1282",
+                tabBarColor:"#00457C",
                 tabBarIcon: ({ color }) => (
                 <Icon name="user" color={color} size={26} />
                 ),
             }}
             />
-
-        
+         <Tab.Screen
+            name="Payment"
+            component={PaymentStackScreen}
+            options={{
+                tabBarLabel: 'Payment',
+                tabBarColor:"#00457C",
+                tabBarIcon: ({ color }) => (
+                    <Icon name="credit-card" color={color} size={23} />
+                    ),
+               
+            }}
+            />
         <Tab.Screen
-            name="Setting"
+            name="MyBooking"
             component={SettingsStackScreen}
             options={{
-                tabBarLabel: 'Setting',
-                tabBarColor:"#6f1282",
+                tabBarLabel: 'MyBooking',
+                tabBarColor:"#00457C",
                 
                 tabBarIcon: ({ color }) => (
                     <Icon name="gear" color={color} size={26} />

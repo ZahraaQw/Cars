@@ -17,7 +17,7 @@ export default ReviewForm=()=>{
                     <Text style={styles.txtqr}>Enterance QR code</Text>
                 <QRCode
                 value={qrdata}
-                color="#301236"
+                color="#011424"
                 backgroundColor='white'
                 size={180}       
                 />
@@ -26,7 +26,7 @@ export default ReviewForm=()=>{
                     <Text style={styles.txtqr}>Exit QR code</Text>
                 <QRCode
                 value={qrdata+"exitcode"}
-                color="#301236"
+                color="#011424"
                 backgroundColor='white'
                 size={180}       
                 />
@@ -40,7 +40,7 @@ export default ReviewForm=()=>{
                     <Text style={styles.txtStl}>OK  </Text>
                     <FontAwesome
                         name="check"
-                        color="#3f3b40"
+                        color="#99d4e9"
                         size={20}
                     />
                     </View>
@@ -87,25 +87,13 @@ export default ReviewForm=()=>{
                            <Text style={styles.txtStl}>Book and Gerate QR   </Text>
                            <FontAwesome
                                 name="qrcode"
-                                color="#3f3b40"
+                                color="#5b6f80"
                                 size={30}
                             />
                           </View>
 
                           </TouchableOpacity>
 
-
-
-                          <TouchableOpacity  >
-                        <View style={styles.canslbuttStl}>
-                           <Text style={styles.txtStl}>Cancel  </Text>
-                           <FontAwesome
-                                name="close"
-                                color="#3f3b40"
-                                size={20}
-                            />
-                          </View>
-                          </TouchableOpacity>
                           </ScrollView>
 
                        
@@ -125,7 +113,7 @@ const styles = StyleSheet.create({
 
 inputStl:{
   borderWidth:1.4,
-  borderColor:"#6f1282",
+  borderColor:"#00457C",
   
   padding:10,
   fontSize:14,
@@ -137,7 +125,7 @@ inputStl:{
 
 buttStl:{
     flexDirection:'row',
-   backgroundColor:'#97499c',
+   backgroundColor:'#00457C',
    paddingVertical:20,
    marginTop:15,
    marginLeft:31,
@@ -148,13 +136,13 @@ buttStl:{
    //opacity:0.6
 },
 txtStl:{
-    color:'#f2f2f2',
+    color:'#99d4e9',
     fontSize:16,
     fontWeight:"800"
 },
 canslbuttStl:{
     flexDirection:'row',
-    backgroundColor:'gray',
+    backgroundColor:'#455f75',
     paddingVertical:10,
     marginTop:12,
     marginLeft:100,
@@ -175,11 +163,11 @@ modalToggle:{
 },
 txtqr:{
   marginBottom:10,
-  color:"#333133"
+  color:"#00457C"
 },
 qrContainer:{
     borderWidth:1.4,
-    borderColor:"#6f1282",
+    borderColor:"#00457C",
     borderRadius:25,
     marginLeft:65,
     marginRight:65,

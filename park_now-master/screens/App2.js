@@ -7,12 +7,14 @@ import ExitQr from './ExitCode';
 import EnterQr from './EnterCode';
 import Find from './Find';
 import SignOut from './SignOut';
-import Timer from './ParkingTimer';
 import Create from './CreateEdit';
 import CreatePark from './CreatePark';
-
+import PayPalAccount  from './PayPalAccount';
+import CreateAccount from './CreateAccount';
+import  ContactInfopay from './ContactInfopay';
 import FindPosition from './Find';
 import FindMyPosition from './FindMyPosition';
+import ParkingHistory from './ParkingHistory';
 const Drawer = createDrawerNavigator();
 const App2 =({navigation})=>{
     return(
@@ -27,7 +29,7 @@ const App2 =({navigation})=>{
         
         drawerStyle={
             {
-             backgroundColor:"white",
+             backgroundColor:"#ebf6fa",
          
             }
            
@@ -40,9 +42,12 @@ const App2 =({navigation})=>{
            <Drawer.Screen name="Enter" component={EnterQr } />
            <Drawer.Screen name="Find" component={Find } />
            <Drawer.Screen name="SingOut" component={SignOut} />
-           <Drawer.Screen name="Timer" component={Timer} />
+           <Drawer.Screen name="history" component={ParkingHistory} />
            <Drawer.Screen name="Park" component={CreatePark} />
            <Drawer.Screen name="EditProfile" component={Create} />
+           <Drawer.Screen name="PayAccount" component={PayPalAccount} navigation="PayAccount"  />
+           <Drawer.Screen name="CreateAccount" component={CreateAccount} navigation= "CreateAccount"/>
+           <Drawer.Screen name="Contact Info" component={ContactInfopay} navigation= "Contact Info"/>
 
           
         </Drawer.Navigator>

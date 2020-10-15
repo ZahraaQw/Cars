@@ -42,19 +42,19 @@ const ProfilScreen=({navigation})=>{
     
           <View style={styles.userInfoSection}>
             <View style={styles.row}>
-            <FontAwesome name="globe"  color="#777777" size={20} />
+            <FontAwesome name="globe"  color="#65808a" size={20} />
               <Text style={styles.txt}>jalood, Nablus</Text>
             </View>
             <View style={styles.row}>
-              <Icon name="phone" color="#777777" size={20}/>
+              <Icon name="phone" color="#65808a" size={20}/>
               <Text style={styles.txt}>+91-900000009</Text>
             </View>
             <View style={styles.row}>
-            <FontAwesome name="envelope-o"  color="#777777"  size={20} />
+            <FontAwesome name="envelope-o"  color="#65808a"  size={20} />
               <Text style={styles.txt}>islam_moh@email.com</Text>
             </View>
             <View style={styles.row}>
-            <FontAwesome name="car"  color="#777777" size={20} />
+            <FontAwesome name="car"  color="#65808a" size={20} />
               <Text style={styles.txt}>795-258-187</Text>
             </View>
           </View>
@@ -63,7 +63,7 @@ const ProfilScreen=({navigation})=>{
           <View style={styles.menuWrapper}>
             <TouchableRipple onPress={() => {}}>
               <View style={styles.menuItem}>
-                <Icon name="credit-card" color="#6f1282" size={25}/>
+                <Icon name="credit-card" color="#00457C" size={25}/>
                 <Text style={styles.menuItemText}>Payment Info </Text>
               </View>
             </TouchableRipple>
@@ -78,6 +78,7 @@ const ProfilScreen=({navigation})=>{
     const styles = StyleSheet.create({
       container: {
         flex: 1,
+        backgroundColor:"#ebf7fc"
       },
       userInfoSection: {
         paddingHorizontal: 30,
@@ -86,10 +87,11 @@ const ProfilScreen=({navigation})=>{
       title: {
         fontSize: 19,
         fontWeight: 'bold',
+        color:"#08374a"
       },
       caption: {
         fontSize: 16,
-       
+        color:"#65808a"
       },
       row: {
         flexDirection: 'row',
@@ -117,7 +119,7 @@ const ProfilScreen=({navigation})=>{
         paddingHorizontal: 30,
       },
       menuItemText: {
-        color: '#777777',
+        color: '#65808a',
         marginLeft: 20,
         fontWeight: '600',
         fontSize: 16,
@@ -128,7 +130,7 @@ const ProfilScreen=({navigation})=>{
         backgroundColor:"#c49fc4"
       },
       txt:{
-        color:"#777777",
+        color:"#65808a",
         marginLeft: 25,
         paddingBottom:3,
         

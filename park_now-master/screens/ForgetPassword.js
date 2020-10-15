@@ -17,9 +17,9 @@ class ForgetPass extends Component{
             isValidPassword:true,
             isValidEmail:true,
             isValidConPassword:true,
-            animation_login:new Animated.Value(width-40),
+            animation_login:new Animated.Value(width-100),
             enable:true,
-            disabled_press:true,
+            disabled_press:false,
 
          };
     }
@@ -78,9 +78,13 @@ class ForgetPass extends Component{
   _typing(){
     return (
         <TypingAnimation 
-          dotColor="#6f1282"
-          style={{marginRight:25}}
-        
+        dotColor="#00457C"
+        style={{
+            position: 'absolute', 
+              marginTop:100,
+              marginLeft:240,
+              
+          }}  
         />
       );
   
@@ -88,7 +92,7 @@ class ForgetPass extends Component{
   _animation(){
       Animated.timing(
           this.state.animation_login,{
-              toValue:40,
+              toValue:50,
               duration:250
           }
       ).start();
@@ -127,46 +131,35 @@ class ForgetPass extends Component{
         
         <View  style={ styles.container } >
             
-            <LinearGradient  colors={["#eba9cf","#6f1282"]} 
-             start={{x: 0.0, y: 0.25}} end={{x: 0.5, y: 1.6}}
-             locations={[0,0.5,0.6]}
-            style={ styles. header } >
-                <Animatable.Text style={ styles.textSignup}
-                animation="fadeInLeft"
-                duration={4000}> Forget Your Password</Animatable.Text>
-                <Text style={styles.text} >Reset Password Now </Text>
-           </LinearGradient>
+         
 
-           <Animatable.View style={[styles.footer,{marginEnd:20}]}
+                <Text style={ styles.textSignup}
+                > Forget Your Password</Text>
+                <Text style={styles.text} >Reset Password Now </Text>
+                <ScrollView  style={styles.footer}>
+
+           <Animatable.View 
             
             animation="bounceInUp"
             duration={5000}
            >
            <View>
 
-
-
-
-            
-
-                 <Text style={[styles.title,{marginTop:20}]}>E-mail</Text>
              <View style={styles.action}>
-          
+            <View style={{flexDirection:"row"}}>
              <FontAwesome
                 name="envelope-o"
                  color="#05345a"
-                 size={20}
-                 style={{paddingTop:10,paddingEnd:4,marginTop:6}}
+                 size={24}
+                 style={{paddingTop:90,paddingEnd:4,marginTop:6}}
               
               />
-
-                 <TextInput
-                
-                 placeholder="Enter your email.."
-                 style={styles.inputText}
-                 onFocus={()=>this._foucus("email")}
-                 onChangeText={(text)=>this.validate(text,'email')}
-                 />
+               <TextInput
+                    style={{ height:60, width:260,borderColor: 'gray', borderWidth: 1 ,borderRadius:5,marginTop:80,marginBottom:30,fontSize:14}}
+                    placeholder="Enter your email address "
+                    onFocus={()=>this._foucus("email")}nter
+                    onChangeText={(text)=>this.validate(text,'email')}/>
+ 
                   {this.state.typing_email ?
                  this._typing()
                   :null }
@@ -180,7 +173,7 @@ class ForgetPass extends Component{
                  }
                   
                  
-                
+                  </View>
                  
                  </View>
 
@@ -206,11 +199,12 @@ class ForgetPass extends Component{
            </View>
            </TouchableOpacity>
            <View style={styles.signUp}>
-              <Text style={{color:'blue'}}onPress={()=>this.props.navigation.goBack()}> Back to Sign In</Text>
+              <Text style={{color:'#f7c202'}} onPress={()=>this.props.navigation.goBack()}> Back to Sign In</Text>
 
           </View>
+          
            </Animatable.View>
-         
+           </ScrollView>
           
 
            
@@ -226,77 +220,83 @@ const width = Dimensions.get("screen").width;
 
     const styles = StyleSheet.create({
         container: {
-            flex: 1,
+            flex: 2,
             backgroundColor:"white",
-            justifyContent:'center'
+            justifyContent:'center',
+            alignItems:"center",
+            backgroundColor:"#00457C",
         },
 
         
         header:{
             backgroundColor:"white",
-            flex:1.3,
+            flex:2,
             justifyContent:"center",
             alignItems:"center",
             borderTopLeftRadius: 0,
             borderBottomRightRadius: 800,
-           
-            
+  
         },
-
+       
         footer:{
-            backgroundColor:"white",
-           flex:2.4,
-           padding:20,
-           
-           
-
+            marginTop:25,
+            backgroundColor:"#e6e7f0",
+            flex:1.5,
+            paddingLeft:25,
+            paddingRight:46,
+            paddingTop:20,
+            borderWidth:1.5,
+            borderColor:"#9acdf5",
+            borderTopLeftRadius:60,
+            borderTopRightRadius:60,        
         },
         textSignup:{
             color:"#fff",
-            fontWeight:"bold",
-            fontSize:22,
-            paddingEnd:20,
-         
+            fontSize:25,
+            marginTop:40,
+            fontFamily:'Lobster-Regular'
+
         },
         text:{
             color:"#f7c202",
-            fontSize:14,
-            marginLeft:-90
-           
+            fontSize:15,
+            marginLeft:13,
+            fontFamily:'Lobster-Regular'
+ 
         },
 
         title:{
-         color:"black",
-         fontWeight:"bold",
-            fontSize:18,
-        },
+            color:"black",
+            fontWeight:"bold",
+               fontSize:14,
+           },
 
         action:{
             flexDirection:"row",
-            borderBottomWidth:1,
-            borderBottomColor:"#f2f2f2"
+        
         },
 
         inputText:{
-          flex:1,
-          marginTop:5,
-          paddingBottom:1,
-          color:"gray"
-
-        },
+            flex:1,
+            marginTop:1,
+            paddingBottom:0,
+            color:"gray"
+  
+          },
         Butt_cont:{
             justifyContent:'center',
             alignItems:'center'
         },
-         anmation:{
-             backgroundColor:"#6f1282",
-             paddingVertical:10,
-             marginTop:55,
-             marginBottom:10,
-             borderRadius:100,
-             justifyContent:'center',
-             alignItems:'center'
-         },       
+        anmation:{
+            backgroundColor:"#00457C",
+            paddingVertical:14,
+            marginBottom:10,
+          //  marginLeft:30,
+           // marginRight:90,
+            borderRadius:100,
+            justifyContent:'center',
+            alignItems:'center'
+        },            
          signUp:{
             flexDirection:'row',
             justifyContent:'center',
@@ -310,7 +310,7 @@ const width = Dimensions.get("screen").width;
          },
          ErrMsg:{
             color:"red",
-            fontSize:10
+            fontSize:10,
 
         }
 

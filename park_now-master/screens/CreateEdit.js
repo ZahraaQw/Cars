@@ -11,13 +11,13 @@ const Create=({navigation})=>{
         <EditStack.Navigator
         screenOptions ={{
           headerStyle:{
-            backgroundColor:"#6f1282",   
+            backgroundColor:"#00457C",   
             height:55,
           },
           
           headerTitleAlign: 'center',
           headerShown: true,
-          headerTintColor:"#fff",
+          headerTintColor:"#99d4e9",
           headerTitleStyle:{
           },
          
@@ -32,8 +32,8 @@ const Create=({navigation})=>{
             <Icon.Button
               name="chevron-left"
               size={25}
-              color='white'
-              backgroundColor="#6f1282"
+              color='#99d4e9'
+              backgroundColor="#00457C"
               onPress={() => navigation.goBack()}
             />
           </View>

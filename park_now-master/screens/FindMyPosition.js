@@ -186,7 +186,7 @@ const styles = StyleSheet.create({
     marginBottom: 25
   },
   cardContainer: {
-    backgroundColor: 'rgba(0, 0, 0, 0.6)',
+    backgroundColor: 'rgba(0, 69, 124,0.5)',
     height: 200,
     width: 300,
     padding: 20,
@@ -206,7 +206,7 @@ const styles = StyleSheet.create({
     alignSelf: 'center'
   },
   priceTitle: {
-    color: 'darkgray',
+    color: '#ebf7fc',
     fontSize: 15,
     alignSelf: 'center'
   }

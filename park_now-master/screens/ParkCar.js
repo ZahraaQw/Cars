@@ -15,7 +15,6 @@ const ParkCar=({navigation})=>{
   
   
     const onChange = (event, selectedValue) => {
-        setShow(Platform.OS === 'ios');
         if (mode == 'date') {
           const currentDate = selectedValue;
           setDate(currentDate);
@@ -57,7 +56,7 @@ const ParkCar=({navigation})=>{
                  <TextInput 
                     style={styles.inputStl}
                     placeholder='Enter your intended destination'></TextInput>
-                    <View style={{marginTop:14,marginLeft:260,position:'absolute'}}>
+                    <View style={{marginTop:14,marginLeft:280,position:'absolute'}}>
                      <FontAwesome
                         name="search"
                         color="gray"
@@ -69,7 +68,7 @@ const ParkCar=({navigation})=>{
                        <View style={styles.date_time}>
                             <IconButton
                             icon="calendar"
-                            color="#6f1282"
+                            color="#00457C"
                             size={35}
                             onPress={showDatepicker}  />
                              <Text style={styles.datetxt}>{formatDate(date)}</Text>
@@ -77,7 +76,7 @@ const ParkCar=({navigation})=>{
                             <IconButton 
                             style={{marginLeft:20}}
                            icon="clock"
-                           color="#6f1282"
+                           color="#00457C"
                            size={35}
                             onPress={showTimepicker}  />
                           <Text style={styles.datetxt}>{formatTime(time)}</Text>
@@ -95,13 +94,11 @@ const ParkCar=({navigation})=>{
                         )}
                         </View>
                   
-                       <Duration/>
-
                        <View style={styles.btn_park}>
                        <TouchableOpacity style={[styles.top_bttn,{
                          marginLeft:35
                        }]}
-                   onPress={() => {navigation.navigate('Choose available slots')}}
+                   onPress={() => {navigation.navigate('available slots')}}
                        >
                               <Text> SLOTS </Text>
                       </TouchableOpacity>
@@ -134,7 +131,7 @@ const styles = StyleSheet.create({
 
     inputStl:{
      
-        borderBottomColor:"#6f1282",
+        borderBottomColor:"#00457C",
         borderBottomWidth:1.4,
         fontSize:14,
         marginLeft:20,
@@ -145,6 +142,8 @@ const styles = StyleSheet.create({
       date_time:{
           marginLeft:8,
           marginRight:30,
+          marginBottom:10,
+          marginTop:10,
           flexDirection:'row',
 
       },
@@ -160,7 +159,7 @@ const styles = StyleSheet.create({
       button: {
         backgroundColor: "#4EB151",
         paddingVertical: 11,
-        paddingHorizontal: 17,
+        paddingHorizontal: 20,
         borderRadius: 3,
         marginVertical: 50
       },
@@ -171,13 +170,13 @@ const styles = StyleSheet.create({
       },
       btn_park:{
         flexDirection:'row',
-        backgroundColor:"#f5e1f7",
-        marginTop:5,
-        paddingVertical:50,
+        backgroundColor:"#ebf6fa",
+        marginTop:10,
+        paddingVertical:80,
       },
  
       top_bttn:{
-        backgroundColor:"#6f1282",
+        backgroundColor:"#00457C",
         opacity:0.4,
         borderRadius: 3,
         paddingVertical:60,

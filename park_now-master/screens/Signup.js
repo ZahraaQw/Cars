@@ -17,9 +17,9 @@ class Signup extends Component{
             isValidPassword:true,
             isValidEmail:true,
             isValidConPassword:true,
-            animation_login:new Animated.Value(width-40),
+            animation_login:new Animated.Value(width-120),
             enable:true,
-            disabled_press:true,
+            disabled_press:false,
 
          };
     }
@@ -78,9 +78,13 @@ class Signup extends Component{
   _typing(){
     return (
         <TypingAnimation 
-          dotColor="#6f1282"
-          style={{marginRight:25}}
-        
+        dotColor="#00457C"
+        style={{
+            position: 'absolute', 
+              marginTop:30,
+              marginLeft:240,
+              
+          }}        
         />
       );
   
@@ -88,7 +92,7 @@ class Signup extends Component{
   _animation(){
       Animated.timing(
           this.state.animation_login,{
-              toValue:40,
+              toValue:50,
               duration:250
           }
       ).start();
@@ -171,18 +175,11 @@ class Signup extends Component{
     return(
         
         <View  style={ styles.container } >
-            
-            <LinearGradient  colors={["#eba9cf","#6f1282"]} 
-             start={{x: 0.0, y: 0.25}} end={{x: 0.5, y: 1.6}}
-             locations={[0,0.5,0.6]}
-            style={ styles. header } >
-                <Animatable.Text style={ styles.textSignup}
-                animation="fadeInLeft"
-                duration={4000}> Welcome Back</Animatable.Text>
+     
+                <Text style={ styles.textSignup}> Welcome Back</Text>
                 <Text style={styles.text} >Sing up! Create Account </Text>
-           </LinearGradient>
-
-           <Animatable.View style={[styles.footer,{marginEnd:20}]}
+            <ScrollView style={styles.footer}>
+           <Animatable.View 
             
             animation="bounceInUp"
             duration={5000}
@@ -191,26 +188,27 @@ class Signup extends Component{
 
 
 
-
-             <Text style={[styles.title,{marginTop:10}]}>User Name</Text>
              <View style={styles.action}>
+                 <View style={{flexDirection:"row"}}>
              <FontAwesome
                  name="user-o"
                  color="#05345a"
                  size={20}
-                 style={{paddingTop:10,paddingEnd:4}}
+                 style={{paddingTop:20,paddingEnd:4}}
               
               />
-                 <TextInput
-                 placeholder="Enter your name.."
-                 style={styles.inputText}
-                 onFocus={()=>this._foucus("user")}
-                 onChangeText={(text)=>this.validate(text,'username')}
-                 />
+
+        <TextInput
+        style={{ height:50, width:250,borderColor: 'gray', borderWidth: 1 ,borderRadius:5,marginTop:10,fontSize:12}}
+        placeholder="Enter your name"
+        onFocus={()=>this._foucus("user")}
+        onChangeText={(text)=>this.validate(text,'username')}
+        />
+                        
                      {this.state.typing_user ?
                  this._typing()
                   :null }
-        
+                     </View>
                  </View>
                  {this.state.isValidUser ? null :  
                         <Animated.View
@@ -219,25 +217,24 @@ class Signup extends Component{
                     </Animated.View>
                     }
 
-
-                 <Text style={[styles.title,{marginTop:10}]}>E-mail</Text>
              <View style={styles.action}>
           
              <FontAwesome
                 name="envelope-o"
                  color="#05345a"
                  size={20}
-                 style={{paddingTop:10,paddingEnd:4}}
+                 style={{paddingTop:21,paddingEnd:4}}
               
               />
 
-                 <TextInput
-                 
-                 placeholder="Enter your email.."
-                 style={styles.inputText}
-                 onFocus={()=>this._foucus("email")}
-                 onChangeText={(text)=>this.validate(text,'email')}
-                 />
+
+            <TextInput
+                    style={{ height:50, width:250,borderColor: 'gray', borderWidth: 1 ,borderRadius:5,marginTop:10,fontSize:12}}
+                    placeholder="Enter your email"
+                    onFocus={()=>this._foucus("email")}
+                    onChangeText={(text)=>this.validate(text,'email')}
+                    />
+                
                   {this.state.typing_email ?
                  this._typing()
                   :null }
@@ -251,21 +248,27 @@ class Signup extends Component{
                  }
                   
                  
-                 <Text style={[styles.title,{marginTop:20}]}>Password</Text>
              <View style={styles.action}>
                 <FontAwesome
                     name="lock"
                     color="#05345a"
-                    size={20}
-                    style={{paddingTop:10,paddingEnd:4}}
+                    size={24}
+                    style={{paddingTop:20,paddingEnd:4,marginLeft:4}}
                 
                 />
+                   <TextInput
+                    secureTextEntry
+
+                    style={{ height:50, width:250,borderColor: 'gray', borderWidth: 1 ,borderRadius:5,marginTop:10,fontSize:12}}
+                    placeholder="Enter Password"
+                    onFocus={()=>this._foucus("pass")}
+                    onChangeText={(text)=>this.validate(text,'password')}
+                    />
                  <TextInput
-                 secureTextEntry
-                 placeholder="********"
+                 
                  style={styles.inputText}
-                 onFocus={()=>this._foucus("pass")}
-                 onChangeText={(text)=>this.validate(text,'password')}
+                 onFocus={()=>this._foucus("")}
+                 onChangeText={(text)=>this.validate(text,'')}
                  />
             {this.state.typing_pass ?
                  this._typing()
@@ -279,22 +282,23 @@ class Signup extends Component{
                         </Animated.View>
                  }
 
-                 <Text style={[styles.title,{marginTop:20}]}> Confirm Password</Text>
              <View style={styles.action}>
              <FontAwesome
                     name="lock"
                     color="#05345a"
-                    size={20}
-                    style={{paddingTop:10,paddingEnd:4}}
+                    size={26}
+                    style={{paddingTop:20,paddingEnd:4,marginLeft:4}}
                 
                 />
-                 <TextInput
-                  secureTextEntry
-                 placeholder="********"
-                 style={styles.inputText}
-                 onFocus={()=>this._foucus("passC")}
-                 onChangeText={(text)=>this.validate(text,'conpassword')}
-                 />
+                  <TextInput
+                    secureTextEntry
+
+                    style={{ height:50, width:250,borderColor: 'gray', borderWidth: 1 ,borderRadius:5,marginTop:10,marginBottom:30,fontSize:12}}
+                    placeholder="Confirm Password"
+                    onFocus={()=>this._foucus("passC")}
+                    onChangeText={(text)=>this.validate(text,'conpassword')}
+                    />
+                
          {this.state.typing_conPass ?
                  this._typing()
                   :null }
@@ -308,7 +312,6 @@ class Signup extends Component{
                         </Animated.View>
                  }
                  </ScrollView>
-           </Animatable.View>
            <TouchableOpacity
      
             style={{ opacity:this.state.disabled_press ? 0.5 : 1 }}
@@ -333,12 +336,12 @@ class Signup extends Component{
            <View style={styles.signUp}>
               
                <Text style={{color:'black'}}>you already have account? </Text>
-               <Text style={{color:'blue'}}onPress={()=>this.props.navigation.goBack()}> Sign In</Text>
+               <Text style={{color:'#f7c202'}}onPress={()=>this.props.navigation.goBack()}> Sign In</Text>
 
            </View>
+           </Animatable.View>
+           </ScrollView>
 
-           
- 
         </View>
         
     );}
@@ -350,15 +353,17 @@ const width = Dimensions.get("screen").width;
 
     const styles = StyleSheet.create({
         container: {
-            flex: 1,
+            flex: 2,
             backgroundColor:"white",
-            justifyContent:'center'
+            justifyContent:'center',
+            alignItems:"center",
+            backgroundColor:"#00457C",
         },
 
         
         header:{
             backgroundColor:"white",
-            flex:1.6,
+            flex:2,
             justifyContent:"center",
             alignItems:"center",
             borderTopLeftRadius: 0,
@@ -368,23 +373,31 @@ const width = Dimensions.get("screen").width;
         },
 
         footer:{
-            backgroundColor:"white",
-           flex:2,
-           padding:20,
-           
+            marginTop:35,
+            backgroundColor:"#e6e7f0",
+            flex:1.5,
+            paddingLeft:30,
+            paddingRight:46,
+            paddingTop:20,
+            borderWidth:1.5,
+            borderColor:"#9acdf5",
+            borderTopLeftRadius:60,
+            borderTopRightRadius:60,  
            
 
         },
         textSignup:{
             color:"#fff",
-            fontWeight:"bold",
             fontSize:25,
-            paddingEnd:20,
+            marginTop:40,
+            fontFamily:'Lobster-Regular'
          
         },
         text:{
             color:"#f7c202",
-            fontSize:14,
+            fontSize:15,
+            marginLeft:13,
+            fontFamily:'Lobster-Regular'
            
         },
 
@@ -396,35 +409,37 @@ const width = Dimensions.get("screen").width;
 
         action:{
             flexDirection:"row",
-            borderBottomWidth:1,
-            borderBottomColor:"#f2f2f2"
+           
         },
 
+       
         inputText:{
-          flex:1,
-          marginTop:1,
-          paddingBottom:1,
-          color:"gray"
+            flex:1,
+            marginTop:1,
+            paddingBottom:0,
+            color:"gray"
+  
+          },
 
-        },
         Butt_cont:{
             justifyContent:'center',
             alignItems:'center'
         },
          anmation:{
-             backgroundColor:"#6f1282",
-             paddingVertical:10,
-             marginTop:1,
-             marginBottom:2,
+            backgroundColor:"#00457C",
+             paddingVertical:14,
+             marginBottom:12,
+             marginLeft:40,
+             marginRight:10,
              borderRadius:100,
              justifyContent:'center',
              alignItems:'center'
          },       
          signUp:{
-            flexDirection:'row',
+             flexDirection:'row',
             justifyContent:'center',
-            //marginTop:0,
-             marginBottom:5
+         //   marginTop:20,
+            marginBottom:30
         },
          logText:{
              color:'white',
@@ -432,8 +447,9 @@ const width = Dimensions.get("screen").width;
              fontSize:14
          },
          ErrMsg:{
-            color:"red",
-            fontSize:10
+            color:"#c90c16",
+            fontSize:10,
+            paddingLeft:30,
 
         }
 
